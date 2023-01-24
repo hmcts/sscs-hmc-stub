@@ -1,10 +1,6 @@
 package uk.gov.hmcts.reform.sscs.service;
 
 import com.fasterxml.jackson.databind.ObjectWriter;
-import javax.jms.BytesMessage;
-import javax.jms.JMSException;
-import javax.jms.Session;
-import javax.validation.constraints.NotNull;
 import org.apache.qpid.jms.message.JmsBytesMessage;
 import org.apache.qpid.jms.provider.amqp.message.AmqpJmsMessageFacade;
 import org.apache.qpid.proton.amqp.Symbol;
@@ -13,6 +9,10 @@ import org.springframework.jms.support.converter.MessageType;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import javax.jms.BytesMessage;
+import javax.jms.JMSException;
+import javax.jms.Session;
+import javax.validation.constraints.NotNull;
 
 @Component
 public class JsonMessageConverter extends MappingJackson2MessageConverter {

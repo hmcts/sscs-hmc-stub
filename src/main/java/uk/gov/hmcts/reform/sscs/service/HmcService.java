@@ -35,7 +35,7 @@ public class HmcService {
     }
 
     private static String generateHearingId() {
-        return String.format("%06d", ThreadLocalRandom.current().nextInt(100000, 1000000));
+        return String.format("%06d", ThreadLocalRandom.current().nextInt(100_000, 1_000_000));
     }
 
     private void updateTopic(HmcMessage hmcMessage) {
