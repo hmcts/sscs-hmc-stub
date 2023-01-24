@@ -7,6 +7,8 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
 
+HMC Stub is a spring boot based application to mock HMC requests
+
 ## Notes
 
 Since Spring Boot 2.1 bean overriding is disabled. If you want to enable it you will need to set `spring.main.allow-bean-definition-overriding` to `true`.
