@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.sscs.model.hmc.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +9,8 @@ import org.springframework.lang.NonNull;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.HmcStatus;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.ListAssistCaseStatus;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.ListingStatus;
+
+import java.time.LocalDateTime;
 
 @Data
 @Builder

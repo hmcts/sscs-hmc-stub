@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.sscs.model.hearing;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +9,8 @@ import uk.gov.hmcts.reform.sscs.ccd.domain.AmendReason;
 import uk.gov.hmcts.reform.sscs.model.HearingLocation;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.HearingType;
 import uk.gov.hmcts.reform.sscs.reference.data.model.HearingChannel;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
