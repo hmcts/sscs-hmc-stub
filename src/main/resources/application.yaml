@@ -48,7 +48,17 @@ spring:
 azure:
   application-insights:
     instrumentation-key: ${sscs.AppInsightsInstrumentationKey:00000000-0000-0000-0000-000000000000}
-
+  service-bus:
+    amqp-connection-string-template : ${AMQP_CONNECTION_STRING:amqps://%1s?amqp.idleTimeout=%2d}
+    connection-postfix: ${HMC_STUB_TOPIC_CONNECTION_POSTFIX:.servicebus.windows.net}
+    hmc-to-hearings-api:
+      namespace: ${HMC_STUB_TOPIC_NAMESPACE:sscs-servicebus-aat}
+      topicName: ${HMC_STUB_TOPIC_NAME:mock-hmc-to-cft-aat}
+      subscriptionName: ${HMC_STUB_TOPIC_SUBSCRIPTION_NAME:mock-hmc-to-sscs-subscription-aat}
+      receiveTimeout: ${HMC_STUB_TOPIC_RECEIVE_TIMEOUT:1}
+      idleTimeout: ${HMC_STUB_TOPIC_IDLE_TIMEOUT:3600000}
+      username: ${HMC_STUB_TOPIC_POLICY_NAME:SendAndListenSharedAccessKey}
+      password: ${HMC_STUB_TOPIC_ACCESS_KEY:}
 idam:
   api:
     url: ${IDAM_API_URL:http://localhost:5000}

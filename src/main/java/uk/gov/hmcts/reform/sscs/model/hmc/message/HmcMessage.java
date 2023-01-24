@@ -6,12 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+import uk.gov.hmcts.reform.sscs.model.servicebus.SessionAwareRequest;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HmcMessage {
+public class HmcMessage implements SessionAwareRequest {
     @NonNull
     private String hmctsServiceCode;
 
@@ -25,4 +26,9 @@ public class HmcMessage {
 
     @NonNull
     private HearingUpdate hearingUpdate;
+
+    @Override
+    public String getSessionId() {
+        return hearingId;
+    }
 }

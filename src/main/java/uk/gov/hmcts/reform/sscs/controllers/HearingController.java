@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.sscs.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,15 @@ import uk.gov.hmcts.reform.sscs.model.hearing.HearingCancelRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HearingGetResponse;
 import uk.gov.hmcts.reform.sscs.model.hearing.HearingRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HmcUpdateResponse;
+import uk.gov.hmcts.reform.sscs.service.HmcService;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
+@RequiredArgsConstructor
 public class HearingController {
+
+    private final HmcService hmcService;
 
     public static final String SERVICE_AUTHORIZATION = "ServiceAuthorization";
     public static final String HEARING_ENDPOINT = "/hearing";
@@ -30,7 +35,7 @@ public class HearingController {
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @RequestBody HearingRequestPayload hearingPayload
     ) {
-        return null;
+        return hmcService.postMapping(hearingPayload);
     }
 
     @PutMapping(value = HEARING_ENDPOINT + "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
