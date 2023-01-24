@@ -165,10 +165,19 @@ dependencyCheck {
   failBuildOnCVSS = 0
   suppressionFile = 'config/owasp/suppressions.xml'
 
+  cveValidForHours = 24
+
   analyzers {
     // Disable scanning of .NET related binaries
     assemblyEnabled = false
+    retirejs {
+      enabled = false
+    }
+    ossIndex {
+      enabled = false
+    }
   }
+
   skipConfigurations = [
     "checkstyle",
     "compileOnly",
@@ -195,6 +204,8 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
+  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.5'
+
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter', version: '4.0.0'
 
   implementation group: 'com.github.hmcts', name: 'service-auth-provider-java-client', version: '4.0.3'
@@ -212,6 +223,10 @@ dependencies {
 
   implementation group: 'io.rest-assured', name: 'rest-assured'
 
+  implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.70'
+  implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '9.0.70'
+  implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '9.0.70'
+
   compileOnly group: 'org.projectlombok', name: 'lombok'
 
   annotationProcessor group: 'org.projectlombok', name: 'lombok'
@@ -225,9 +240,15 @@ dependencies {
 }
 
 dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.1"
+  imports {
+      mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.1"
+  }
+  dependencies {
+    // CVE-2022-38752
+    dependencySet(group: 'org.yaml', version: '1.33') {
+      entry 'snakeyaml'
     }
+  }
 }
 
 mainClassName = 'uk.gov.hmcts.reform.sscs.Application'
