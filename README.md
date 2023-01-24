@@ -1,6 +1,11 @@
-# sscs-hmc-stub
+# SSCS HMC Stub
 
-[![Build Status](https://travis-ci.org/hmcts/sscs-hmc-stub.svg?branch=master)](https://travis-ci.org/hmcts/sscs-hmc-stub)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=coverage)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sscs-hmc-stub&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=SSCSHA)
 
 ## Notes
 
