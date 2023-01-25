@@ -12,6 +12,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import uk.gov.hmcts.reform.sscs.service.servicebus.JsonMessageConverter;
 
 @Slf4j
 @Configuration
@@ -57,7 +58,7 @@ public class HearingsJmsConfig {
         factory.setSubscriptionDurable(Boolean.TRUE);
         factory.setSessionTransacted(Boolean.TRUE);
         factory.setSessionAcknowledgeMode(Session.SESSION_TRANSACTED);
-
+        factory.setMessageConverter(new JsonMessageConverter());
         configurer.configure(factory, hmcJmsConnectionFactory);
         return factory;
     }

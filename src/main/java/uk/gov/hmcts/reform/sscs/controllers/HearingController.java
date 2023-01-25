@@ -17,6 +17,8 @@ import uk.gov.hmcts.reform.sscs.model.hearing.HearingRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HmcUpdateResponse;
 import uk.gov.hmcts.reform.sscs.service.HmcService;
 
+import java.io.IOException;
+
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
@@ -34,7 +36,7 @@ public class HearingController {
         @RequestHeader(AUTHORIZATION) String authorisation,
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @RequestBody HearingRequestPayload hearingPayload
-    ) {
+    ) throws IOException {
         return hmcService.postMapping(hearingPayload);
     }
 

@@ -1,5 +1,8 @@
-package uk.gov.hmcts.reform.sscs.service;
+package uk.gov.hmcts.reform.sscs.service.servicebus;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.jms.BytesMessage;
 import jakarta.jms.JMSException;
@@ -11,6 +14,7 @@ import org.apache.qpid.proton.amqp.Symbol;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.io.IOException;
 
@@ -21,7 +25,10 @@ public class JsonMessageConverter extends MappingJackson2MessageConverter {
     private static final Symbol CONTENT_TYPE = Symbol.valueOf("application/json");
 
     public JsonMessageConverter() {
-        super();
+        ObjectMapper objectMapper = new ObjectMapper();
+        setObjectMapper(objectMapper);
+        objectMapper.findAndRegisterModules();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.setTargetType(MessageType.BYTES);
         this.setTypeIdPropertyName(TYPE_ID_PROPERTY);
     }

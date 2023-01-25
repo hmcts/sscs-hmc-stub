@@ -1,0 +1,17 @@
+{
+  "hmctsServiceCode": "{hmctsServiceCode}",
+  "hearingUpdate": {
+    "hearingResponseReceivedDateTime": "{dateTimeNow}",
+    "hearingEventBroadcastDateTime": "{dateTimeNow}",
+    "nextHearingDate": null,
+    "listAssistSessionID": null,
+    "hearingRoomId": null,
+    "hearingJudgeId": null,
+    "HMCStatus": "{HMCStatus}",
+    "hearingListingStatus": "{listingStatus}",
+    "ListAssistCaseStatus": "{laCaseStatus}",
+    "hearingVenueId": null
+  },
+  "caseRef": "{caseId}",
+  "hearingID": "{hearingId}"
+}

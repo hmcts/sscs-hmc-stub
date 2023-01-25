@@ -1,0 +1,117 @@
+{
+  "requestDetails": {
+    "versionNumber": "{versionNumber}",
+    "status": "{HMCStatus}",
+    "cancellationReasonCodes": [],
+    "timestamp": "{dateTimeNow}",
+    "hearingGroupRequestId": null,
+    "partiesNotified": null,
+    "hearingRequestID": "{hearingId}"
+  },
+  "hearingDetails": {
+    "autolistFlag": true,
+    "hearingType": "BBA3-SUB",
+    "hearingWindow": {
+      "dateRangeStart": "2023-01-25",
+      "dateRangeEnd": null,
+      "firstDateTimeMustBe": "2023-01-25T12:56:50.687Z"
+    },
+    "duration": 120,
+    "nonStandardHearingDurationReasons": [],
+    "hearingPriorityType": null,
+    "numberOfPhysicalAttendees": null,
+    "hearingInWelshFlag": null,
+    "hearingLocations": [],
+    "facilitiesRequired": [],
+    "listingComments": "",
+    "hearingRequester": null,
+    "privateHearingRequiredFlag": null,
+    "leadJudgeContractType": null,
+    "panelRequirements": {
+      "authorisationTypes": [],
+      "panelPreferences": [],
+      "panelSpecialisms": [],
+      "roleType": [],
+      "authorisationSubType": []
+    },
+    "hearingIsLinkedFlag": false,
+    "amendReasonCodes": [],
+    "multiDayHearing": false,
+    "hearingChannels": []
+  },
+  "caseDetails": {
+    "hmctsServiceCode": "{hmctsServiceCode}",
+    "externalCaseReference": null,
+    "caseDeepLink": null,
+    "hmctsInternalCaseName": "{caseName}",
+    "publicCaseName": "{caseName}",
+    "caseAdditionalSecurityFlag": false,
+    "caseInterpreterRequiredFlag": false,
+    "caseCategories": [],
+    "caseManagementLocationCode": null,
+    "caseRef": "{caseId}",
+    "caserestrictedFlag": null,
+    "caseSLAStartDate": null
+  },
+  "partyDetails": [
+    {
+      "partyID": "string",
+      "partyType": "IND",
+      "partyRole": "string",
+      "individualDetails": {
+        "title": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "preferredHearingChannel": "TEL",
+        "interpreterLanguage": "string",
+        "reasonableAdjustments": [
+          "RA0001"
+        ],
+        "vulnerableFlag": true,
+        "vulnerabilityDetails": "string",
+        "hearingChannelEmail": [
+          "string"
+        ],
+        "hearingChannelPhone": [
+          "string"
+        ],
+        "relatedParties": [
+          {
+            "relationshipType": "string",
+            "relatedPartyID": "string"
+          }
+        ],
+        "custodyStatus": "string",
+        "otherReasonableAdjustmentDetails": "string"
+      },
+      "partyChannelSubType": "string",
+      "organisationDetails": {
+        "name": "string",
+        "organisationType": "string",
+        "cftOrganisationID": "string"
+      },
+      "unavailabilityRanges": [
+        {
+          "unavailableFromDate": "2023-01-25",
+          "unavailableToDate": "2023-01-25",
+          "unavailabilityType": "string"
+        }
+      ],
+      "unavailabilityDOW": [
+        {
+          "DOW": "MONDAY",
+          "DOWUnavailabilityType": "AM"
+        }
+      ]
+    }
+  ],
+  "hearingResponse": {
+    "receivedDateTime": "{dateTimeNow}",
+    "responseVersion": "{versionNumberNew}",
+    "listingStatus": "DRAFT",
+    "hearingCancellationReason": null,
+    "listAssistTransactionID": null,
+    "laCaseStatus": "{laCaseStatus}",
+    "hearingDaySchedule": []
+  }
+}
