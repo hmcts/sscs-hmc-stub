@@ -9,6 +9,7 @@ import uk.gov.hmcts.reform.sscs.model.hearing.HearingRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HmcUpdateResponse;
 import uk.gov.hmcts.reform.sscs.model.hearing.RequestDetails;
 import uk.gov.hmcts.reform.sscs.model.hmc.message.HmcMessage;
+import uk.gov.hmcts.reform.sscs.model.hmc.reference.HmcStatus;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.ListAssistCaseStatus;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.ListingStatus;
 import uk.gov.hmcts.reform.sscs.model.servicebus.SessionAwareMessagingService;
@@ -16,13 +17,12 @@ import uk.gov.hmcts.reform.sscs.service.servicebus.HmcMessagingServiceFactory;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static uk.gov.hmcts.reform.sscs.model.ResponseTypes.DEFAULT_HEARING;
-import static uk.gov.hmcts.reform.sscs.model.hmc.reference.HmcStatus.AWAITING_LISTING;
 
 @Slf4j
 @Service
@@ -44,12 +44,15 @@ public class HmcService {
 
     public HmcUpdateResponse defaultMapping(String hearingId, HearingRequestPayload request) throws IOException {
         LocalDateTime dateTimeNow = LocalDateTime.now();
+        HmcStatus hmcStatus = HmcStatus.AWAITING_LISTING;
+        ListAssistCaseStatus listAssistCaseStatus = ListAssistCaseStatus.LISTED;
+        ListingStatus listingStatus = ListingStatus.DRAFT;
 
         String caseId = request.getCaseDetails().getCaseId();
         long versionNumber =
             Optional.ofNullable(request.getRequestDetails()).map(RequestDetails::getVersionNumber).orElse(0L) + 1;
 
-        Map<String, String> replacements = new HashMap<>();
+        Map<String, String> replacements = new ConcurrentHashMap<>();
 
         replacements.put("\\{hmctsServiceCode\\}", "BBA3");
         replacements.put("\\{hearingId\\}", hearingId);
@@ -57,9 +60,9 @@ public class HmcService {
         replacements.put("\\{caseName\\}", request.getCaseDetails().getHmctsInternalCaseName());
         replacements.put("\\{versionNumber\\}", String.valueOf(versionNumber));
         replacements.put("\\{dateTimeNow\\}", dateTimeNow.toString());
-        replacements.put("\\{HMCStatus\\}", AWAITING_LISTING.name());
-        replacements.put("\\{laCaseStatus\\}", ListAssistCaseStatus.LISTED.name());
-        replacements.put("\\{listingStatus\\}", ListingStatus.DRAFT.name());
+        replacements.put("\\{HMCStatus\\}", hmcStatus.name());
+        replacements.put("\\{laCaseStatus\\}", listAssistCaseStatus.name());
+        replacements.put("\\{listingStatus\\}", listingStatus.name());
 
         HmcMessage hmcMessage = templateResponseService.getTemplate(DEFAULT_HEARING, HmcMessage.class, replacements);
 
@@ -72,17 +75,20 @@ public class HmcService {
     public HmcUpdateResponse deleteMapping(String hearingId, HearingCancelRequestPayload hearingDeletePayload)
         throws IOException {
         LocalDateTime dateTimeNow = LocalDateTime.now();
+        HmcStatus hmcStatus = HmcStatus.AWAITING_LISTING;
+        ListAssistCaseStatus listAssistCaseStatus = ListAssistCaseStatus.LISTED;
+        ListingStatus listingStatus = ListingStatus.DRAFT;
 
-        Map<String, String> replacements = new HashMap<>();
+        Map<String, String> replacements = new ConcurrentHashMap<>();
 
         replacements.put("\\{hmctsServiceCode\\}", "BBA3");
         replacements.put("\\{hearingId\\}", hearingId);
         replacements.put("\\{caseId\\}", null);
         replacements.put("\\{versionNumber\\}", "1");
         replacements.put("\\{dateTimeNow\\}", dateTimeNow.toString());
-        replacements.put("\\{HMCStatus\\}", AWAITING_LISTING.name());
-        replacements.put("\\{laCaseStatus\\}", ListAssistCaseStatus.LISTED.name());
-        replacements.put("\\{listingStatus\\}", ListingStatus.DRAFT.name());
+        replacements.put("\\{HMCStatus\\}", hmcStatus.name());
+        replacements.put("\\{laCaseStatus\\}", listAssistCaseStatus.name());
+        replacements.put("\\{listingStatus\\}", listingStatus.name());
 
         HmcMessage hmcMessage = templateResponseService.getTemplate(DEFAULT_HEARING, HmcMessage.class, replacements);
 

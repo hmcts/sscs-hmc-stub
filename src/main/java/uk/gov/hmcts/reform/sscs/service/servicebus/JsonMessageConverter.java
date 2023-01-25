@@ -23,6 +23,7 @@ public class JsonMessageConverter extends MappingJackson2MessageConverter {
     private static final Symbol CONTENT_TYPE = Symbol.valueOf("application/json");
 
     public JsonMessageConverter() {
+        super();
         ObjectMapper objectMapper = new ObjectMapper();
         setObjectMapper(objectMapper);
         objectMapper.findAndRegisterModules();
