@@ -14,6 +14,7 @@ public class JmsMessagingService implements SessionAwareMessagingService {
 
     private final String topic;
 
+    @Override
     public boolean sendMessage(SessionAwareRequest message) {
 
         try {

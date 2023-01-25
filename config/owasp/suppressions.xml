@@ -17,17 +17,6 @@
     <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
     <cve>CVE-2021-4235</cve>
   </suppress>
-  <!--End of false positives section -->
-
-  <!--Please add all the temporary suppression under the below section-->
-  <suppress>
-    <notes>
-      CVE-2022-38752 (Resolved in snakeyaml 1.32 but still being flagged by dependency check)
-    </notes>
-    <cve>CVE-2022-38752</cve>
-  </suppress>
-  <!--End of temporary suppression section -->
-
   <suppress until = "2023-03-01">
     <notes><![CDATA[
      these common libraries are being mistaken as Apache Commons Net
@@ -42,6 +31,33 @@
     <packageUrl regex="true">^pkg:maven\/org(\-|\.)apache(\-|\.)commons\/commons\-(?!net)\w+@.*$</packageUrl>
     <cve>CVE-2021-37533</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   incorrect tagging qpid-jms-client as qpid_java
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.qpid/qpid\-jms\-client@.*$</packageUrl>
+    <cve>CVE-2016-3094</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   incorrect tagging jakarta.activation-api with eclipse_ide
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/jakarta\.activation/jakarta\.activation\-api@.*$</packageUrl>
+    <cve>CVE-2010-4647</cve>
+    <cve>CVE-2008-7271</cve>
+  </suppress>
+  <!--End of false positives section -->
+
+  <!--Please add all the temporary suppression under the below section-->
+  <suppress>
+    <notes>
+      CVE-2022-38752 (Resolved in snakeyaml 1.32 but still being flagged by dependency check)
+    </notes>
+    <cve>CVE-2022-38752</cve>
+  </suppress>
+  <!--End of temporary suppression section -->
+
+
   <suppress until = "2023-03-01">
     <notes><![CDATA[
    file name: snakeyaml-1.33.jar

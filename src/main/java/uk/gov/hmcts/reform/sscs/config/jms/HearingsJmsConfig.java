@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.sscs.config.jms;
 
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Session;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.qpid.jms.JmsConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,9 +12,6 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-
-import javax.jms.ConnectionFactory;
-import javax.jms.Session;
 
 @Slf4j
 @Configuration
