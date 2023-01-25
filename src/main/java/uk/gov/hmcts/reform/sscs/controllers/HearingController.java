@@ -46,8 +46,8 @@ public class HearingController {
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @PathVariable String id,
         @RequestBody HearingRequestPayload hearingPayload
-    ) {
-        return null;
+    ) throws IOException {
+        return hmcService.putMapping(id, hearingPayload);
     }
 
     @DeleteMapping(value = HEARING_ENDPOINT + "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -56,8 +56,8 @@ public class HearingController {
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @PathVariable String id,
         @RequestBody HearingCancelRequestPayload hearingDeletePayload
-    ) {
-        return null;
+    ) throws IOException {
+        return hmcService.deleteMapping(id, hearingDeletePayload);
     }
 
     @GetMapping(HEARING_ENDPOINT + "/{id}")
@@ -66,7 +66,7 @@ public class HearingController {
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @PathVariable String id,
         @RequestParam(name = "isValid", required = false) Boolean isValid
-    ) {
-        return null;
+    ) throws IOException {
+        return hmcService.getMapping(id, isValid);
     }
 }
