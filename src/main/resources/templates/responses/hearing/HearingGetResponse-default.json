@@ -1,0 +1,66 @@
+{
+  "requestDetails": {
+    "versionNumber": "{versionNumber}",
+    "status": "{HMCStatus}",
+    "cancellationReasonCodes": [],
+    "timestamp": "{dateTimeNow}",
+    "hearingGroupRequestId": null,
+    "partiesNotified": null,
+    "hearingRequestID": "{hearingId}"
+  },
+  "hearingDetails": {
+    "autolistFlag": true,
+    "hearingType": "BBA3-SUB",
+    "hearingWindow": {
+      "dateRangeStart": "2024-01-25",
+      "dateRangeEnd": null,
+      "firstDateTimeMustBe": "2024-01-25T12:56:50.687Z"
+    },
+    "duration": 120,
+    "nonStandardHearingDurationReasons": [],
+    "hearingPriorityType": null,
+    "numberOfPhysicalAttendees": null,
+    "hearingInWelshFlag": null,
+    "hearingLocations": [],
+    "facilitiesRequired": [],
+    "listingComments": "",
+    "hearingRequester": null,
+    "privateHearingRequiredFlag": null,
+    "leadJudgeContractType": null,
+    "panelRequirements": {
+      "authorisationTypes": [],
+      "panelPreferences": [],
+      "panelSpecialisms": [],
+      "roleType": [],
+      "authorisationSubType": []
+    },
+    "hearingIsLinkedFlag": false,
+    "amendReasonCodes": [],
+    "multiDayHearing": false,
+    "hearingChannels": []
+  },
+  "caseDetails": {
+    "hmctsServiceCode": "{hmctsServiceCode}",
+    "externalCaseReference": null,
+    "caseDeepLink": null,
+    "hmctsInternalCaseName": "{caseName}",
+    "publicCaseName": "{caseName}",
+    "caseAdditionalSecurityFlag": false,
+    "caseInterpreterRequiredFlag": false,
+    "caseCategories": [],
+    "caseManagementLocationCode": null,
+    "caseRef": "{caseId}",
+    "caserestrictedFlag": null,
+    "caseSLAStartDate": null
+  },
+  "partyDetails": [],
+  "hearingResponse": {
+    "receivedDateTime": "{dateTimeNow}",
+    "responseVersion": "{versionNumber}",
+    "listingStatus": "{listingStatus}",
+    "hearingCancellationReason": null,
+    "listAssistTransactionID": null,
+    "laCaseStatus": "{laCaseStatus}",
+    "hearingDaySchedule": []
+  }
+}

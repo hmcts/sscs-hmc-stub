@@ -1,0 +1,6 @@
+{
+  "hearingRequestId": "{hearingId}",
+  "timeStamp": "{dateTimeNow}",
+  "status": "{HMCStatus}",
+  "versionNumber": "{versionNumber}"
+}

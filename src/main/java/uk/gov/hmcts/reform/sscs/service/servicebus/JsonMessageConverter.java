@@ -1,5 +1,7 @@
-package uk.gov.hmcts.reform.sscs.service;
+package uk.gov.hmcts.reform.sscs.service.servicebus;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.jms.BytesMessage;
 import jakarta.jms.JMSException;
@@ -22,6 +24,10 @@ public class JsonMessageConverter extends MappingJackson2MessageConverter {
 
     public JsonMessageConverter() {
         super();
+        ObjectMapper objectMapper = new ObjectMapper();
+        setObjectMapper(objectMapper);
+        objectMapper.findAndRegisterModules();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.setTargetType(MessageType.BYTES);
         this.setTypeIdPropertyName(TYPE_ID_PROPERTY);
     }
