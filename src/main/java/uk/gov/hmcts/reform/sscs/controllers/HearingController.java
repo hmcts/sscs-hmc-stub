@@ -67,6 +67,6 @@ public class HearingController {
         @PathVariable String id,
         @RequestParam(name = "isValid", required = false) Boolean isValid
     ) throws IOException {
-        return hmcService.getMapping(id, isValid);
+        return hmcService.getMapping(id);
     }
 }

@@ -12,9 +12,9 @@
     "autolistFlag": true,
     "hearingType": "BBA3-SUB",
     "hearingWindow": {
-      "dateRangeStart": "2023-01-25",
+      "dateRangeStart": "2024-01-25",
       "dateRangeEnd": null,
-      "firstDateTimeMustBe": "2023-01-25T12:56:50.687Z"
+      "firstDateTimeMustBe": "2024-01-25T12:56:50.687Z"
     },
     "duration": 120,
     "nonStandardHearingDurationReasons": [],
@@ -53,62 +53,11 @@
     "caserestrictedFlag": null,
     "caseSLAStartDate": null
   },
-  "partyDetails": [
-    {
-      "partyID": "string",
-      "partyType": "IND",
-      "partyRole": "string",
-      "individualDetails": {
-        "title": "string",
-        "firstName": "string",
-        "lastName": "string",
-        "preferredHearingChannel": "TEL",
-        "interpreterLanguage": "string",
-        "reasonableAdjustments": [
-          "RA0001"
-        ],
-        "vulnerableFlag": true,
-        "vulnerabilityDetails": "string",
-        "hearingChannelEmail": [
-          "string"
-        ],
-        "hearingChannelPhone": [
-          "string"
-        ],
-        "relatedParties": [
-          {
-            "relationshipType": "string",
-            "relatedPartyID": "string"
-          }
-        ],
-        "custodyStatus": "string",
-        "otherReasonableAdjustmentDetails": "string"
-      },
-      "partyChannelSubType": "string",
-      "organisationDetails": {
-        "name": "string",
-        "organisationType": "string",
-        "cftOrganisationID": "string"
-      },
-      "unavailabilityRanges": [
-        {
-          "unavailableFromDate": "2023-01-25",
-          "unavailableToDate": "2023-01-25",
-          "unavailabilityType": "string"
-        }
-      ],
-      "unavailabilityDOW": [
-        {
-          "DOW": "MONDAY",
-          "DOWUnavailabilityType": "AM"
-        }
-      ]
-    }
-  ],
+  "partyDetails": [],
   "hearingResponse": {
     "receivedDateTime": "{dateTimeNow}",
-    "responseVersion": "{versionNumberNew}",
-    "listingStatus": "DRAFT",
+    "responseVersion": "{versionNumber}",
+    "listingStatus": "{listingStatus}",
     "hearingCancellationReason": null,
     "listAssistTransactionID": null,
     "laCaseStatus": "{laCaseStatus}",
