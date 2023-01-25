@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.jms.annotation.EnableJms;
 import uk.gov.hmcts.reform.sscs.ccd.config.CcdRequestDetails;
 
 @SpringBootApplication
 @SuppressWarnings("HideUtilityClassConstructor") // Spring needs a constructor, its not a utility class
+@EnableJms
 @ComponentScan(basePackages = {"uk.gov.hmcts.reform"})
 @EnableFeignClients(basePackages =
     {
