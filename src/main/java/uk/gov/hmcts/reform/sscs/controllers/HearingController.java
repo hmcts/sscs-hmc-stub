@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.sscs.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,8 @@ import uk.gov.hmcts.reform.sscs.model.hearing.HearingCancelRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HearingGetResponse;
 import uk.gov.hmcts.reform.sscs.model.hearing.HearingRequestPayload;
 import uk.gov.hmcts.reform.sscs.model.hearing.HmcUpdateResponse;
-import uk.gov.hmcts.reform.sscs.service.HmcService;
+import uk.gov.hmcts.reform.sscs.service.HearingDataService;
+import uk.gov.hmcts.reform.sscs.service.HearingService;
 
 import java.io.IOException;
 
@@ -23,13 +25,14 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class HearingController {
 
-    private final HmcService hmcService;
+    private final HearingService hearingService;
+    private final HearingDataService hearingDataService;
 
     public static final String SERVICE_AUTHORIZATION = "ServiceAuthorization";
     public static final String HEARING_ENDPOINT = "/hearing";
-    public static final String ID = "id";
 
     @PostMapping(value = HEARING_ENDPOINT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HmcUpdateResponse createHearingRequest(
@@ -37,7 +40,7 @@ public class HearingController {
         @RequestHeader(SERVICE_AUTHORIZATION) String serviceAuthorization,
         @RequestBody HearingRequestPayload hearingPayload
     ) throws IOException {
-        return hmcService.postMapping(hearingPayload);
+        return hearingService.postMapping(hearingPayload);
     }
 
     @PutMapping(value = HEARING_ENDPOINT + "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -47,7 +50,8 @@ public class HearingController {
         @PathVariable String id,
         @RequestBody HearingRequestPayload hearingPayload
     ) throws IOException {
-        return hmcService.putMapping(id, hearingPayload);
+        hearingDataService.checkHearingId(id);
+        return hearingService.putMapping(id, hearingPayload);
     }
 
     @DeleteMapping(value = HEARING_ENDPOINT + "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +61,8 @@ public class HearingController {
         @PathVariable String id,
         @RequestBody HearingCancelRequestPayload hearingDeletePayload
     ) throws IOException {
-        return hmcService.deleteMapping(id, hearingDeletePayload);
+        hearingDataService.checkHearingId(id);
+        return hearingService.deleteMapping(id, hearingDeletePayload);
     }
 
     @GetMapping(HEARING_ENDPOINT + "/{id}")
@@ -67,6 +72,7 @@ public class HearingController {
         @PathVariable String id,
         @RequestParam(name = "isValid", required = false) Boolean isValid
     ) throws IOException {
-        return hmcService.getMapping(id);
+        hearingDataService.checkHearingId(id);
+        return hearingService.getMapping(id);
     }
 }

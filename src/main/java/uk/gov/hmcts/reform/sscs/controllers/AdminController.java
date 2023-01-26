@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.sscs.model.AdminRequest;
-import uk.gov.hmcts.reform.sscs.service.HmcService;
+import uk.gov.hmcts.reform.sscs.service.AdminService;
+import uk.gov.hmcts.reform.sscs.service.HearingDataService;
 
 import java.io.IOException;
 
@@ -18,11 +19,11 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final HmcService hmcService;
+    private final AdminService adminService;
+    private final HearingDataService hearingDataService;
 
     public static final String SERVICE_AUTHORIZATION = "ServiceAuthorization";
     public static final String ADMIN_ENDPOINT = "/admin";
-    public static final String ID = "id";
 
     @PutMapping(value = ADMIN_ENDPOINT + "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateHearingRequest(
@@ -31,6 +32,7 @@ public class AdminController {
         @PathVariable String id,
         @RequestBody AdminRequest adminRequest
     ) throws IOException {
-        hmcService.adminRequest(id, adminRequest);
+        hearingDataService.checkHearingId(id);
+        adminService.adminRequest(id, adminRequest);
     }
 }

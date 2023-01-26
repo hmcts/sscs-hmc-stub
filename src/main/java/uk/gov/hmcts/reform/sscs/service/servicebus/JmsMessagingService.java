@@ -16,13 +16,12 @@ public class JmsMessagingService implements SessionAwareMessagingService {
 
     @Override
     public boolean sendMessage(SessionAwareRequest message) {
-
         try {
             log.info("JMS : About to send request with body: {}", message.toString());
             jmsTemplate.convertAndSend(topic, message);
         } catch (Exception ex) {
             log.error("Unable to send message {}. Cause: {}", message, ex);
-            return false;
+            throw ex;
         }
         return true;
     }
