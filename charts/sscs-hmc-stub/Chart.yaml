@@ -8,5 +8,5 @@ maintainers:
   - name: HMCTS SSCS team
 dependencies:
   - name: java
-    version: 4.0.4
+    version: 4.0.11
     repository: '@hmctspublic'
