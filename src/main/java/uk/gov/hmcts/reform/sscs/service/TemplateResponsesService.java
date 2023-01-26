@@ -48,11 +48,12 @@ public class TemplateResponsesService {
                 .map(CaseDetails::getHmctsInternalCaseName)
                 .orElse("case name");
         tokens.put("caseName", caseName);
-        tokens.put("versionNumber", String.valueOf(hearingData.getVersionNumber()));
-        tokens.put("dateTimeNow", dateTimeNow.toString());
-        tokens.put("HMCStatus", hearingData.getHmcStatus().name());
-        tokens.put("laCaseStatus", hearingData.getLaCaseStatus().name());
-        tokens.put("listingStatus", hearingData.getListingStatus().name());
+
+        tokens.put("versionNumber", hearingData.getVersionNumber());
+        tokens.put("dateTimeNow", dateTimeNow);
+        tokens.put("HMCStatus", hearingData.getHmcStatus());
+        tokens.put("laCaseStatus", hearingData.getLaCaseStatus());
+        tokens.put("listingStatus", hearingData.getListingStatus());
         return tokens;
     }
 

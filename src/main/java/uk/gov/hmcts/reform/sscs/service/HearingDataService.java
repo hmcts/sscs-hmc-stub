@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.sscs.service;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
@@ -25,7 +24,6 @@ import static org.springframework.beans.factory.config.ConfigurableBeanFactory.S
 @Slf4j
 @Service
 @Scope(SCOPE_SINGLETON)
-@Getter
 @RequiredArgsConstructor
 public class HearingDataService {
 
