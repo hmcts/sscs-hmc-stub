@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.sscs.model.hearing.HearingsGetResponse;
 import uk.gov.hmcts.reform.sscs.model.hmc.reference.HmcStatus;
 import uk.gov.hmcts.reform.sscs.service.HearingDataService;
+import uk.gov.hmcts.reform.sscs.service.HearingsService;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
@@ -16,6 +17,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 @RequiredArgsConstructor
 public class HearingsController {
 
+    private final HearingsService hearingsService;
     private final HearingDataService hearingDataService;
 
     public static final String SERVICE_AUTHORIZATION = "ServiceAuthorization";
@@ -29,6 +31,6 @@ public class HearingsController {
         @RequestParam(name = "status", required = false) HmcStatus hmcStatus
     ) {
         hearingDataService.checkCaseId(caseId);
-        return null;
+        return hearingsService.getMapping(caseId, hmcStatus);
     }
 }

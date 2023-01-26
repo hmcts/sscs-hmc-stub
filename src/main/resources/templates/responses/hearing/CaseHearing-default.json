@@ -1,0 +1,14 @@
+{
+  "hearingChannels": [],
+  "hearingDaySchedule": [],
+  "hearingGroupRequestId": null,
+  "hearingIsLinkedFlag": false,
+  "hearingListingStatus": "{listingStatus}",
+  "hearingRequestDateTime": "{dateTimeNow}",
+  "hearingType": null,
+  "hmcStatus": "{HMCStatus}",
+  "lastResponseReceivedDateTime": "{dateTimeNow}",
+  "listAssistCaseStatus": "{laCaseStatus}",
+  "requestVersion": "{versionNumber}",
+  "hearingID": "{hearingId}"
+}
