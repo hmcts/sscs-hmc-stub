@@ -40,4 +40,102 @@ withPipeline(type, product, component) {
   env.JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
   overrideVaultEnvironments(vaultOverrides)
   loadVaultSecrets(secrets)
+
+  afterAlways('securitychecks') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/",
+      reportFiles          : 'dependency-check-report.html',
+      reportName           : 'Dependency Check Report'
+    ])
+  }
+
+  afterAlways('build') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/test/",
+      reportFiles          : 'index.html',
+      reportName           : 'Unit Test Report'
+    ])
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/integration/",
+      reportFiles          : 'index.html',
+      reportName           : 'Unit Test Report'
+    ])
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/integration/",
+      reportFiles          : 'index.html',
+      reportName           : 'Unit Test Report'
+    ])
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/pmd/",
+      reportFiles          : 'main.html,test.html,integrationTest.html,contractTest.html,smokeTest.html,functionalTest.html',
+      reportName           : 'PMD Report'
+    ])
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/pmd/",
+      reportFiles          : 'main.html,test.html,integrationTest.html,contractTest.html,smokeTest.html,functionalTest.html',
+      reportName           : 'Checkstyle Report'
+    ])
+  }
+
+  afterAlways('smoketest:aat') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/smoke/",
+      reportFiles          : 'index.html',
+      reportName           : 'Smoke Test Report'
+    ])
+  }
+
+  afterAlways('smoketest:preview') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/smoke/",
+      reportFiles          : 'index.html',
+      reportName           : 'Smoke Test Report'
+    ])
+  }
+
+  afterAlways('functionalTest:aat') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/functional/",
+      reportFiles          : 'index.html',
+      reportName           : 'Functional Test Report'
+    ])
+  }
+
+  afterAlways('functionalTest:preview') {
+    publishHTML([
+      allowMissing         : true,
+      alwaysLinkToLastBuild: true,
+      keepAll              : true,
+      reportDir            : "build/reports/tests/functional/",
+      reportFiles          : 'index.html',
+      reportName           : 'Functional Test Report'
+    ])
+  }
 }
