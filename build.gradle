@@ -114,6 +114,7 @@ tasks.withType(Checkstyle).each {task -> configure(task) {
   group = "checkstyle"
 }}
 
+// TODO: fix pmd
 //pmd {
 //  toolVersion = "6.53.0"
 //  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
@@ -136,8 +137,8 @@ jacocoTestReport {
   }
 }
 project.tasks['check'].dependsOn integration
-project.tasks['sonarqube'].dependsOn test, integration
-
+// TODO: fix jacocoTestReport
+project.tasks['sonarqube'].dependsOn test, integration//, jacocoTestReport
 check.dependsOn integration
 checkstyleMain.shouldRunAfter(compileJava)
 integration.shouldRunAfter(test)
