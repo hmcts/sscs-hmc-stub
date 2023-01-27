@@ -30,12 +30,6 @@ resource "azurerm_key_vault_secret" "stub-hmc-servicebus-shared-access-key-tf" {
   key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
 }
 
-resource "azurerm_key_vault_secret" "stub-hmc-servicebus-policy-name" {
-  name = "stub-hmc-servicebus-policy-name"
-  value = module.servicebus-topic.azurerm_servicebus_topic_authorization_rule.send_listen_auth_rule.name
-  key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
-}
-
 module "servicebus-subscription" {
   source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
   name                = "hmc-to-sscs-subscription-${var.env}"
