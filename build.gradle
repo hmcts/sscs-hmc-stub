@@ -131,13 +131,17 @@ jacocoTestReport {
   executionData(test, integration)
   reports {
     xml.required = true
-    csv.required = false
+    csv.required = true
     xml.destination file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
   }
 }
-
-project.tasks['sonarqube'].dependsOn jacocoTestReport
 project.tasks['check'].dependsOn integration
+project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+check.dependsOn integration
+checkstyleMain.shouldRunAfter(compileJava)
+integration.shouldRunAfter(test)
+test.shouldRunAfter(checkstyleTest)
+integration.shouldRunAfter(test)
 
 sonarqube {
   properties {
@@ -196,8 +200,6 @@ repositories {
   mavenCentral()
   maven { url 'https://jitpack.io' }
 }
-
-ext['snakeyaml.version'] = '1.33'
 
 dependencies {
 

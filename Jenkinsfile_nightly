@@ -8,8 +8,8 @@ properties([
 @Library("Infrastructure")
 
 def type = "java"
-def product = "rpe"
-def component = "spring-boot-template"
+def product = "sscs"
+def component = "hmc-stub"
 
 def secrets = [
   'sscs-${env}' : [
@@ -31,6 +31,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 }
 
 withNightlyPipeline(type, product, component) {
+  env.JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
   //Disabling until AAT environment set up.
 //    loadVaultSecrets(secrets)
 //    enableSlackNotifications('#sscs-tech')
