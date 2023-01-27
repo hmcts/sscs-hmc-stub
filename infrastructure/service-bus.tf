@@ -42,6 +42,6 @@ module "servicebus-subscription" {
 
 resource "azurerm_key_vault_secret" "stub-hmc-servicebus-subscription-name" {
   name = "stub-hmc-servicebus-subscription-name"
-  value = module.servicebus-subscription.name
+  value = "hmc-to-sscs-subscription-${var.env}"
   key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
 }
