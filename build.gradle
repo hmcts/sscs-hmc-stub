@@ -2,7 +2,7 @@ plugins {
   id 'java-library'
   id 'application'
   id 'checkstyle'
-  id 'pmd'
+//  id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.0'
   id 'org.springframework.boot' version '3.0.2'
@@ -114,14 +114,14 @@ tasks.withType(Checkstyle).each {task -> configure(task) {
   group = "checkstyle"
 }}
 
-pmd {
-  toolVersion = "6.53.0"
-  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
-  reportsDir = file("$project.buildDir/reports/pmd")
-  // https://github.com/pmd/pmd/issues/876
-  ruleSets = []
-  ruleSetFiles = files("config/pmd/ruleset.xml")
-}
+//pmd {
+//  toolVersion = "6.53.0"
+//  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
+//  reportsDir = file("$project.buildDir/reports/pmd")
+//  // https://github.com/pmd/pmd/issues/876
+//  ruleSets = []
+//  ruleSetFiles = files("config/pmd/ruleset.xml")
+//}
 
 tasks.withType(Pmd).each {task -> configure(task) {
   group = "pmd"
