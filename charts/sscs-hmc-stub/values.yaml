@@ -18,8 +18,16 @@ java:
           alias: IDAM_OAUTH2_CLIENT_ID
         - name: idam-sscs-oauth2-client-secret
           alias: IDAM_OAUTH2_CLIENT_SECRET
-        - name: mock-hmc-servicebus-shared-access-key-tf
+        - name: sscs-servicebus-topic-namespace-name
+          alias: HMC_STUB_TOPIC_NAMESPACE
+        - name: stub-servicebus-topic-name
+          alias: HMC_STUB_TOPIC_NAME
+        - name: stub-servicebus-policy-name
+          alias: HMC_STUB_TOPIC_POLICY_NAME
+        - name: stub-servicebus-shared-access-key-tf
           alias: HMC_STUB_TOPIC_ACCESS_KEY
+        - name: stub-servicebus-subscription-name
+          alias: HMC_STUB_TOPIC_SUBSCRIPTION_NAME
   environment:
     SERVER_PORT: 8100
     REFORM_TEAM: sscs
@@ -34,11 +42,6 @@ java:
     CORE_CASE_DATA_API_URL: "http://ccd-data-store-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     COMMON_REF_API_URL: "http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     JUDICIAL_REF_API_URL: "http://judicial-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    HMC_STUB_TOPIC_NAMESPACE: "sscs-servicebus-{{ .Values.global.environment }}"
-    HMC_STUB_TOPIC_NAME: "mock-hmc-to-cft-{{ .Values.global.environment }}"
-    HMC_STUB_TOPIC_SUBSCRIPTION_NAME: "mock-hmc-to-sscs-subscription-{{ .Values.global.environment }}"
-    HMC_STUB_LISTENING_ENABLED: false
-    HMC_STUB_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
     EXUI_API_URL: "https://manage-case.{{ .Values.global.environment }}.platform.hmcts.net"
     HMC_API_URL: "http://hmc-cft-hearing-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     CORE_CASE_DATA_JURISDICTION_ID: SSCS
