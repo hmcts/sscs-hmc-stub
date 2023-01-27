@@ -63,7 +63,7 @@ public class TemplateResponsesService {
         return deserializeString(templateType, json);
     }
 
-    private String replaceTokens(Map<String, Object> tokens, String tokenJson) throws JsonProcessingException {
+    public String replaceTokens(Map<String, Object> tokens, String tokenJson) throws JsonProcessingException {
         String json = tokenJson;
         for (Map.Entry<String, Object> entry : tokens.entrySet()) {
             String regex = String.format("\"\\s*\\{%s\\}\\s*\"", entry.getKey());
@@ -74,7 +74,7 @@ public class TemplateResponsesService {
         return json;
     }
 
-    private <T> T deserializeString(Class<T> templateType, String value) throws JsonProcessingException {
+    public <T> T deserializeString(Class<T> templateType, String value) throws JsonProcessingException {
         try {
             return objectMapper.readValue(value, templateType);
         } catch (IOException e) {
@@ -83,7 +83,7 @@ public class TemplateResponsesService {
         }
     }
 
-    private <T> String getJsonString(ResponseTypes type, Class<T> templateType) throws IOException {
+    public <T> String getJsonString(ResponseTypes type, Class<T> templateType) throws IOException {
         String path = type.getPath(templateType);
         try {
             InputStream inputStream = new ClassPathResource(path).getInputStream();
