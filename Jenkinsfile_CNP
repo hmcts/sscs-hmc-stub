@@ -38,6 +38,8 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 withPipeline(type, product, component) {
   env.JAVA_HOME = "/usr/lib/jvm/java-17-openjdk-amd64"
+  env.GRADLE_OPTS = "--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED"
+
   overrideVaultEnvironments(vaultOverrides)
   loadVaultSecrets(secrets)
 
