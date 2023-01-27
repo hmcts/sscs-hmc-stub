@@ -20,13 +20,13 @@ resource "azurerm_key_vault_secret" "stub-hmc-servicebus-topic-name" {
 
 resource "azurerm_key_vault_secret" "stub-hmc-servicebus-policy-name" {
   name = "stub-hmc-servicebus-policy-name"
-  value = module.servicebus-topic.azurerm_servicebus_topic_authorization_rule.send_listen_auth_rule.name
+  value = module.send_listen_auth_rule.name
   key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
 }
 
 resource "azurerm_key_vault_secret" "stub-hmc-servicebus-shared-access-key-tf" {
   name = "mock-hmc-servicebus-shared-access-key-tf"
-  value = module.servicebus-topic.azurerm_servicebus_topic_authorization_rule.send_listen_auth_rule.primary_key
+  value = module.send_listen_auth_rule.primary_key
   key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
 }
 
@@ -40,6 +40,6 @@ module "servicebus-subscription" {
 
 resource "azurerm_key_vault_secret" "stub-hmc-servicebus-subscription-name" {
   name = "stub-hmc-servicebus-subscription-name"
-  value = module.servicebus-topic.servicebus-subscription.name
+  value = module.servicebus-subscription.name
   key_vault_id = data.azurerm_key_vault.sscs_key_vault.id
 }
