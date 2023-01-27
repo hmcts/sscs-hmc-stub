@@ -1,8 +1,7 @@
 #HMC to Hearings API
-module "servicebus-subscription" {
-  source              = "git@github.com:hmcts/terraform-module-servicebus-subscription?ref=master"
-  name                = "mock-hmc-to-sscs-subscription-${var.env}"
-  namespace_name      = "sscs-servicebus-${var.env}"
-  topic_name          = "mock-hmc-to-cft-${var.env}"
-  resource_group_name = "sscs-${var.env}"
+module "servicebus-topic" {
+  source                = "git@github.com:hmcts/terraform-module-servicebus-topic?ref=master"
+  name                  = "mock-hmc-to-cft-${var.env}"
+  namespace_name        = "sscs-servicebus-${var.env}"
+  resource_group_name   = "sscs-${var.env}"
 }
