@@ -219,13 +219,13 @@ dependencies {
     exclude group: 'org.springdoc'
   }
 
-  implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.2.0'
+  implementation group: 'org.apache.qpid', name: 'qpid-jms-client', version: '2.5.0'
   // https://mvnrepository.com/artifact/jakarta.jms/jakarta.jms-api
   implementation group: 'jakarta.jms', name: 'jakarta.jms-api', version: '3.1.0'
   // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
   implementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
 
-  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.2'
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '5.1.9'
 
@@ -234,7 +234,7 @@ dependencies {
   implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.5'
   implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.5'
 
-  implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.0'
+  implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.4.0'
 
   implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
 
