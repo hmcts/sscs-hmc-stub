@@ -215,7 +215,7 @@ dependencies {
 
   implementation group: 'com.github.hmcts', name: 'service-auth-provider-java-client', version: '5.0.0'
 
-  implementation group: 'com.github.hmcts', name: 'sscs-common', version: '4.24.3', {
+  implementation group: 'com.github.hmcts', name: 'sscs-common', version: '4.26.14', {
     exclude group: 'org.springdoc'
   }
 
